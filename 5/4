@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	int N, M, i, j, sum = 0, k=0;
+	cout << "Введите порядок матрицы:";
+	cin >> N >> M;
+	int* b = new int[M];
+	int* c = new int[M];
+	int** a = new int* [N];
+	for (i = 0; i < N; i++)
+		a[i] = new int[M];
+	for (i = 0; i < N; i++)
+		for (j = 0; j < M; j++)
+		{
+			cout << "Введите A[" << i << "][" << j << "]:\t";
+			cin >> a[i][j];
+		}
+	for (j = 0; j < M; j++)
+	{
+		for (i = 0; i < N; i++)
+			if (a[i][j] > 0)
+			{
+				sum = sum + a[i][j];
+				k++;
+			}
+		b[j] = sum;
+		c[j] = k;
+		k = 0;
+		sum = 0;
+	}
+	for (j = 0; j < M; j++)
+		cout << b[j] << "\t";
+	cout << endl;
+	for (j = 0; j < M; j++)
+		cout << c[j] << "\t";
+	return 0;
+}
