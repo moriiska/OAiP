@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	int N, i, j, min=100000, max=0,k,l,m,p;
+	cout << "Введите порядок квадратной матрицы:";
+	cin >> N;
+	int** a = new int* [N];
+	for (i = 0; i < N; i++)
+		a[i] = new int[N];
+	for (i=0;i<N;i++)
+		for (j=0;j<N;j++)
+		{
+			cout << "Введите A[" << i << "][" << j << "]:\t";
+			cin >> a[i][j];
+		}
+	for (i=0;i<N;i++)
+		for(j=0;j<N;j++)
+			if (a[i][j] > max)
+			{
+				max = a[i][j];
+				k = i;
+				l = j;
+			}
+			else if (a[i][j] < min)
+			{
+				min = a[i][j];
+				m = i;
+				p = j;
+			}
+	for (i=0;i<N;i++)
+		for (j = 0; j < N; j++)
+		{
+			cout << " A[" << i << "][" << j << "]=" << a[i][j] << "\t";
+			if (j == N - 1)
+				cout << endl;
+		}
+	cout << "Максимальный элемент матрицы: A[" << k << "][" << l << "]=" << max << "\t\n";
+	cout << "Минимальныйй элемент матрицы: A[" << m << "][" << p << "]=" << min << "\t\n";
+	return 0;
+}
